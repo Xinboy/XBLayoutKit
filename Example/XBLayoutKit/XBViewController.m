@@ -8,7 +8,11 @@
 
 #import "XBViewController.h"
 
+#import "CalendarView.h"
+
 @interface XBViewController ()
+
+@property (nonatomic, strong) CalendarView *calendar;
 
 @end
 
@@ -18,6 +22,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    
+    self.calendar = [[CalendarView alloc] initWithFrame:CGRectMake(0, 300, 300, 300)];
+    self.calendar.backgroundColor = [UIColor redColor];
+    
+    [self.view addSubview:self.calendar];
+    
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

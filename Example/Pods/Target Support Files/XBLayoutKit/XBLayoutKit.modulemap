@@ -1,0 +1,6 @@
+framework module XBLayoutKit {
+  umbrella header "XBLayoutKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

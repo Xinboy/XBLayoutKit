@@ -1,0 +1,6 @@
+framework module Pods_XBLayoutKit_Tests {
+  umbrella header "Pods-XBLayoutKit_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
