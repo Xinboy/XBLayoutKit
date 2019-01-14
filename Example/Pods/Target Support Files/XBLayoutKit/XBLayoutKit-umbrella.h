@@ -13,7 +13,6 @@
 #import "CalculateView.h"
 #import "CalendarView.h"
 #import "PwdTextField.h"
-#import "RateStarView.h"
 #import "VerticalLabel.h"
 
 FOUNDATION_EXPORT double XBLayoutKitVersionNumber;

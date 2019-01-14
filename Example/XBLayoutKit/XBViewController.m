@@ -10,9 +10,13 @@
 
 #import "CalendarView.h"
 
+#import "PasswordView.h"
+
 @interface XBViewController ()
 
 @property (nonatomic, strong) CalendarView *calendar;
+
+@property (nonatomic, strong) PasswordView *pwdView;
 
 @end
 
@@ -27,8 +31,13 @@
     self.calendar = [[CalendarView alloc] initWithFrame:CGRectMake(0, 300, 300, 300)];
     self.calendar.backgroundColor = [UIColor redColor];
     
-    [self.view addSubview:self.calendar];
+//    [self.view addSubview:self.calendar];
     
+    
+    self.pwdView = [[PasswordView alloc] init];
+    self.pwdView.frame = CGRectMake(0, 300, 300, 40);
+    [self.pwdView frameWithNumberCount:4 NumberSpace:2];
+    [self.view addSubview:self.pwdView];
     
     
     

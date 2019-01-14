@@ -15,29 +15,29 @@
  */
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM (NSInteger ,LabelVerticalAlignment){
-    LabelVerticalAlignmentTop = 0,
-    LabelVerticalAlignmentMiddle,
-    LabelVerticalAlignmentBottom
+typedef NS_ENUM (NSInteger ,TextVerticalAlignment){
+    TextVerticalAlignmentTop = 0,
+    TextVerticalAlignmentMiddle,
+    TextVerticalAlignmentBottom
 };
 
 @interface VerticalLabel : UILabel
 
 
-@property (nonatomic, assign) LabelVerticalAlignment verticalAlignment;
+@property (nonatomic, assign) TextVerticalAlignment textVerticalAlignment;
 
 
 /**
  修改垂直方式、左侧间距、上下间距
  */
-- (void)setVerticalAlignment:(LabelVerticalAlignment)verticalAlignment
+- (void)setVerticalAlignment:(TextVerticalAlignment)textVerticalAlignment
                    leftSpace:(CGFloat)leftSpace
                verticalSpace:(CGFloat)verticalSpace;
 
 /**
  修改垂直方式、水平方式
  */
-- (void)setVerticalAlignment:(LabelVerticalAlignment)verticalAlignment
+- (void)setVerticalAlignment:(TextVerticalAlignment)textVerticalAlignment
                textAlignment:(NSTextAlignment)alignment;
 
 @end

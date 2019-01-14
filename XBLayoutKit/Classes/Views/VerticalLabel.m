@@ -28,45 +28,45 @@
     if (self) {
         self.leftSpace = 11.0;
         self.verticalSpace = 20.0;
-        self.verticalAlignment = LabelVerticalAlignmentMiddle;
+        self.verticalAlignment = TextVerticalAlignmentMiddle;
     }
     return self;
 }
 
 #pragma mark - --- 公开方法 ---
-- (void)setVerticalAlignment:(LabelVerticalAlignment)verticalAlignment
+- (void)setVerticalAlignment:(TextVerticalAlignment)textVerticalAlignment
                    leftSpace:(CGFloat)leftSpace
                  verticalSpace:(CGFloat)verticalSpace {
-    self.verticalAlignment = verticalAlignment;
+    self.verticalAlignment = textVerticalAlignment;
     self.leftSpace = leftSpace;
     self.verticalSpace = verticalSpace;
     [self setNeedsDisplay];
 }
 
 
-- (void)setVerticalAlignment:(LabelVerticalAlignment)verticalAlignment
+- (void)setVerticalAlignment:(TextVerticalAlignment)textVerticalAlignment
                textAlignment:(NSTextAlignment)alignment {
-    self.verticalAlignment = verticalAlignment;
+    self.verticalAlignment = textVerticalAlignment;
     self.textAlignment = alignment;
     [self setNeedsDisplay];
 }
 
-#pragma mark - --- n私有方法 ---
-- (void)setVerticalAlignment:(LabelVerticalAlignment)verticalAlignment {
-    _verticalAlignment = verticalAlignment;
+#pragma mark - --- 私有方法 ---
+- (void)setVerticalAlignment:(TextVerticalAlignment)textVerticalAlignment {
+    _textVerticalAlignment = textVerticalAlignment;
     [self setNeedsDisplay];
 }
 
 - (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines{
     
     CGRect textRect = [super textRectForBounds:bounds limitedToNumberOfLines:numberOfLines];
-    switch (self.verticalAlignment) {
-        case LabelVerticalAlignmentTop:
+    switch (self.textVerticalAlignment) {
+        case TextVerticalAlignmentTop:
             textRect.origin.y = self.bounds.origin.y + self.verticalSpace;
             break;
-        case LabelVerticalAlignmentMiddle:
+        case TextVerticalAlignmentMiddle:
             break;
-        case LabelVerticalAlignmentBottom:
+        case TextVerticalAlignmentBottom:
             textRect.origin.y = bounds.origin.y + bounds.size.height - textRect.size.height - self.verticalSpace;
             break;
         default:

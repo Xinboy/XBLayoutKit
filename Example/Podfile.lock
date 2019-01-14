@@ -1,6 +1,7 @@
 PODS:
   - Masonry (1.1.0)
-  - XBLayoutKit (0.1.0)
+  - XBLayoutKit (0.0.1):
+    - Masonry
 
 DEPENDENCIES:
   - Masonry
@@ -16,7 +17,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  XBLayoutKit: 7232e1c53ba135d1bf2ba1986465b2890c711e77
+  XBLayoutKit: 8edc1d5473d7aa3531927217d06b3626e4872d04
 
 PODFILE CHECKSUM: 75239304556131c0bc7ae9d9e1e3e9f69b3eb0e9
 
