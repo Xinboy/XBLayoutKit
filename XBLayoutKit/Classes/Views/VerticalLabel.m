@@ -19,10 +19,6 @@
 
 @implementation VerticalLabel
 
-- (instancetype)init {
-    return [self initWithFrame:CGRectZero];
-}
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {

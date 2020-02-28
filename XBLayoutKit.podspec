@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 							TODO: 布局视图组件，主要集合各种自定义控件以及视图控制器
                        DESC
 
-  s.homepage         = 'https://dev.tencent.com/u/Xinbo2016/p/XBLayoutKit/git'
+  s.homepage         = 'https://github.com/Xinboy/XBLayoutKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '洪新博' => 'xinbo.hong@hotmail.com' }
-  s.source           = { :git => 'https://git.dev.tencent.com/Xinbo2016/XBLayoutKit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'git@github.com:Xinboy/XBLayoutKit.git', :tag => s.version.to_s }
 
 
   s.platform    = :ios, "8.0"
