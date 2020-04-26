@@ -22,14 +22,18 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 /// 进入首页按钮(左上角)
 @property (nonatomic, strong) UIButton *skipButton;
+/// 图片引导页的小圆点
 @property (nonatomic, strong) UIPageControl *imagePageControl;
-
+/// 图片数据
 @property (nonatomic, strong) NSArray *imageArray;
+/// 滑动index
 @property (nonatomic, assign) NSInteger slideIntoNumber;
 
+/// 视频播放器 iOS >= 9.0
 @property (nonatomic, strong) AVPlayerViewController *avPlayerController;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+/// 视频播放器 iOS < 9.0
 @property (nonatomic, strong) MPMoviePlayerController *mpPlayerController;
 #pragma clang diagnostic pop
 
@@ -44,7 +48,6 @@
     if (self) {
         //默认为NO
         self.canSliderInto = NO;
-
         
          self.imageArray = imageNameArray;
         
@@ -58,17 +61,26 @@
         [self addSubview:self.scrollView];
         
         self.skipButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.skipButton.frame = CGRectMake(kSCREEN_WIDTH * 0.8, kSCREEN_HEIGHT * 0.1, 50, 25);
+        self.skipButton.frame = CGRectMake(kSCREEN_WIDTH * 0.8, kSCREEN_HEIGHT * 0.075, 44, 44);
         self.skipButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [self.skipButton setTitle:@"跳过" forState:UIControlStateNormal];
-        [self.skipButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self.skipButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.skipButton.layer.cornerRadius = self.skipButton.frame.size.height * 0.5;
+        self.skipButton.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.skipButton.layer.borderWidth = 1.0;
         [self.skipButton addTarget:self action:@selector(skipAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.skipButton];
+
+        // 设置引导页上的页面控制器
+        self.imagePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(kSCREEN_WIDTH * 0.0, kSCREEN_HEIGHT * 0.9, kSCREEN_WIDTH * 1.0, kSCREEN_HEIGHT * 0.1)];
+        self.imagePageControl.currentPage = 0;
+        self.imagePageControl.numberOfPages = imageNameArray.count;
+        self.imagePageControl.pageIndicatorTintColor = [UIColor grayColor];
+        self.imagePageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+        [self addSubview:self.imagePageControl];
         
         
         // 添加在引导视图上的多张引导图片
-            
         for (int i = 0; i < imageNameArray.count; i++) {
             UIImageView *imageView = [[UIImageView alloc] init];
             imageView.frame = CGRectMake(kSCREEN_WIDTH * i, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT);
@@ -82,27 +94,23 @@
             }
             
             // 设置在最后一张图片上显示进入体验按钮
-            if (i == imageNameArray.count - 1 && isHidden == YES) {
+            if (i == imageNameArray.count - 1 && isHidden == NO) {
                 imageView.userInteractionEnabled = YES;
                 
                 UIButton *startButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                startButton.frame = CGRectMake(kSCREEN_WIDTH * 0.3, kSCREEN_HEIGHT * 0.8, kSCREEN_WIDTH * 0.4, kSCREEN_HEIGHT * 0.08);
-                startButton.titleLabel.font = [UIFont systemFontOfSize:21];
-                startButton.backgroundColor = [UIColor orangeColor];
+                startButton.frame = CGRectMake(kSCREEN_WIDTH * 0.3, self.imagePageControl.frame.origin.y - 44 - 10, kSCREEN_WIDTH * 0.4, 44);
+                startButton.titleLabel.font = [UIFont systemFontOfSize:18];
                 [startButton setTitle:@"开始体验" forState:UIControlStateNormal];
-                [startButton setTitleColor:[UIColor colorWithRed:164 / 255.0 green:201 / 255.0 blue:67 / 255.0 alpha:1.0] forState:UIControlStateNormal];
+                [startButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 [startButton addTarget:self action:@selector(skipAction:) forControlEvents:UIControlEventTouchUpInside];
+                
+//                startButton.backgroundColor = [UIColor orangeColor];
+                startButton.layer.cornerRadius = startButton.frame.size.height * 0.5;
+                startButton.layer.borderColor = [UIColor whiteColor].CGColor;
+                startButton.layer.borderWidth = 1.0;
                 [imageView addSubview:startButton];
             }
         }
-        
-        // 设置引导页上的页面控制器
-        self.imagePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(kSCREEN_WIDTH * 0.0, kSCREEN_HEIGHT * 0.9, kSCREEN_WIDTH * 1.0, kSCREEN_HEIGHT * 0.1)];
-        self.imagePageControl.currentPage = 0;
-        self.imagePageControl.numberOfPages = imageNameArray.count;
-        self.imagePageControl.pageIndicatorTintColor = [UIColor grayColor];
-        self.imagePageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-        [self addSubview:self.imagePageControl];
         
     }
     return self;
@@ -151,8 +159,6 @@
             [self.mpPlayerController.view addSubview:movieStartButton];
 #pragma clang diagnostic pop
         }
-        
-        
         
         [movieStartButton addTarget:self action:@selector(skipAction:) forControlEvents:UIControlEventTouchUpInside];
         [UIView animateWithDuration:kHIDDEN_TIME animations:^{

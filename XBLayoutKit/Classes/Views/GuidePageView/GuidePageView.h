@@ -5,6 +5,9 @@
 //  Created by Xinbo Hong on 2019/8/27.
 //  Copyright © 2019 com.xinbo.pro. All rights reserved.
 //
+/*
+*  控件名称: 新版本预览视图，支持静态图片，动态图片，视频
+*/
 
 #import <UIKit/UIKit.h>
 
